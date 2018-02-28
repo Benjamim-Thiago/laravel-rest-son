@@ -12,3 +12,7 @@ Route::middleware('auth:api')->prefix('v1')->group(function(){
         'users' => 'UserController',
     ]);
 });
+
+Route::get('cors_example', function () {
+    return ['status'=>'ok'];
+});
