@@ -10,7 +10,11 @@ class ProductController extends Controller
     
     public function index()
     {
-        return Product::all();
+        $minutes = \Carbon\Carbon::now()->addMinutes(10);
+        $products = \Cache::remember('api::products', $minutes, function () {
+            return Product::all();
+        });
+        return $products;
     }
 
     
@@ -21,6 +25,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        \Cache::forget('api::products');
         $data = $request->all();
         $data['user_id'] = \Auth::id(); 
         return Product::create($data);
@@ -29,6 +34,7 @@ class ProductController extends Controller
    
     public function show(Product $product)
     {
+        \Cache::forget('api::products');
         return $product;
     }
 
@@ -39,6 +45,7 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        \Cache::forget('api::products');
         $product->update($request->all());
         return $product;
     }
@@ -46,6 +53,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $this->authorize('delete', $product);
+        \Cache::forget('api::products');
         $product->delete();
         return $product;
     }
