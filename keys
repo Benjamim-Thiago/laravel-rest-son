@@ -1,9 +1,9 @@
-Client ID: 1
-Client Secret: hvHrulCDJOosZa71FyJ99o2zZw0ZVHK6SuK9J99J
-Password grant client created successfully.
-Client ID: 2
-Client Secret: buHXZuqI4smtM0BoqXM8Zxbj7gnuUzW5Q6ynUtXT
-
 Client ID: 3
-Client Secret: hJjO6LHY40GdA3jAB7WqpoeIe5NLczPYR635zRSW
+Client Secret: amvuWFcWKVyyH5DwDRKTYZfCi1kAsfebzKvxofra
 
+
+http://127.0.0.1:8000/oauth/authorize?
+client_id=3&
+response_type=token&
+scope=&
+redirect_uri=http://www.teste.com.br/login

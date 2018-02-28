@@ -21,7 +21,9 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        return Product::create($request->all());
+        $data = $request->all();
+        $data['user_id'] = \Auth::id(); 
+        return Product::create($data);
     }
 
    
